@@ -12,11 +12,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="client/app/styles/bootstrap.css">
-        <link rel="stylesheet" href="client/app/styles/main.css">
+        <link rel="stylesheet" href="client/app/bower_components/bootstrap/dist/css/bootstrap.css">
+        <!-- <link rel="stylesheet" href="client/app/styles/bootstrap.css">-->
+        <link rel="stylesheet" href="client/app/styles/main.css"> 
         <!-- endbuild -->
 </head>
-  <body ng-app="web1App">
+  <body ng-app="eliApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -59,6 +60,7 @@
         <script src="client/app/bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
         <script src="client/app/bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
         <script src="client/app/bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+
         <!-- endbuild -->
 
         <!-- build:js scripts/modules.js -->
@@ -70,13 +72,22 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="client/app/scripts/app.js"></script>
         <script src="client/app/scripts/controllers/main.js"></script>
-        <script src="client/app/scripts/controllers\main.js"></script>
+        
         <!-- endbuild -->
+        <!--auth-->
+        <!--LogIn-->
+     <script src="client/app/auth/views/logIn/logIn.js"></script>
+
+        <!--LogIn-->
+
+        <script src="client/app/auth/auth_service.js"></script>
+     <script src="client/app/auth/routes.js"></script>  
+        <!--auth-->
 
         <!-- Include the PubNub Library -->
-<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<!-- <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
  
-<!-- Instantiate PubNub -->
+ Instantiate PubNub 
 <script type="text/javascript">
  
   var PUBNUB_demo = PUBNUB.init({
@@ -91,7 +102,7 @@
 PUBNUB_demo.publish({
     channel: 'demo_tutorial',
     message: {"text":"Hey!"}
- });
+ }); -->
 </script>
 </body>
 </html>

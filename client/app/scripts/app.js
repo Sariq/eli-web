@@ -1,7 +1,7 @@
 'use strict';
 
 
-  angular.module('web1App', [
+  angular.module('eliApp', [
   'ngCookies',
   'ngResource',
   'ui.router'
@@ -13,9 +13,9 @@
     $stateProvider
       .state('index', {
         url: '/',
-        templateUrl: 'client/app/views/main.html',
+        templateUrl: 'client/app/main/views/main.html',
         controller:'MainCtrl'
-      })
+      }) 
   })
 
 

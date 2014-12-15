@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('web1App')
+angular.module('eliApp')
   .controller('MainCtrl', function ($http,$scope,$resource,StudentService) {
   	var self=this;
      self.date='';
@@ -10,9 +10,14 @@ angular.module('web1App')
 
 var s="sarqq";
 var objArray = '';
-                 
-                 //objArray = new Array();
-                 //objArray.push(obj);
+                 var obj = {
+                        id:"test",
+                        taskIds: 1,
+                        action: "Karin",
+                        userName: "Sari"
+                  };
+                 objArray = new Array();
+                 objArray.push(obj);
 
 /*  var postPromise=$http({
          method : 'POST',
@@ -29,19 +34,12 @@ $scope.getme=function(){
       user=myGet.get({ id: 1 }, function(data) {
               self.date=data;
               console.log(self.date)
-         
+              console.log(user)
          
 
               
               });     //}
-}
-var obj = {
-    id: "test",
-    taskIds: 1,
-    action: "SariSari",
-    userName: "Sari"
-};
-
+    }
      $scope.saveme=function(){
      myGet.save(obj,function(d) {
               self.w=d;
@@ -65,6 +63,6 @@ var obj = {
 
 
   });
-angular.module('web1App').factory('StudentService', function ($resource) {
+angular.module('eliApp').factory('StudentService', function ($resource) {
     return $resource('http://localhost:81\:81/Service.svc/Tasks/TasksForMerge/:id',{id:'@id'},{update: {method: 'PUT'}});
 });
