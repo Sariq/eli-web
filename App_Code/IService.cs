@@ -1,98 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
-using System.IO;
 
-// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService" in both code and config file together.
 [ServiceContract]
 public interface IService
 {
+    [OperationContract]
+    [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetObject/{id}")]
+    ValObject GetObject(string id);
 
-    //[OperationContract]
-    //[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-    //    BodyStyle = WebMessageBodyStyle.Wrapped,
-    //     UriTemplate = "json/{firstN}")]
-    //Book json(string firstN);
-    //[OperationContract]
-    //[WebInvoke(Method = "POST",
-    //    ResponseFormat = WebMessageFormat.Json,
-    //    BodyStyle = WebMessageBodyStyle.Wrapped,
-    //     UriTemplate = "SaveStudent")]
-    //void SaveStudent(Students req);
+    [OperationContract]
+    [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "InsertObject")]
+    void InsertObject(ValObject obj);
 
+    [OperationContract]
+    [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "RemoveObject/{id}")]
+    void RemoveObject(string id);
 
-    //[OperationContract]
-    //[WebGet]
-    //string GetDataUsingMethod(string value);
+    [OperationContract]
+    [WebInvoke(Method = "PUT", ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "UpdateObject")]
+    void UpdateObject(ValObject obj);
 
-    //[OperationContract]
-    //[WebGet(RequestFormat = WebMessageFormat.Json,ResponseFormat = WebMessageFormat.Json,
-    //    BodyStyle = WebMessageBodyStyle.Wrapped,
-    //    UriTemplate="/GetDatat/{value}")]
-    //Object GetDataUsingURI(String value);
+    [OperationContract]
+    [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAllObject")]
+    List<ValObject> GetAllObject();
 
+    [OperationContract]
+    [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "MyFunction/{str}")]
+    List<Employee> MyFunction(string str);
 
-   
-        //[OperationContract]
-        //[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
-        //  ResponseFormat = WebMessageFormat.Json,
-        //  UriTemplate = "Tasks/SetTasksForMerge")]
-        //void CreateNewTaks(valObj values);
+////    [OperationContract]
+////    string GetData(int value);
 
+////    [OperationContract]
+////    CompositeType GetDataUsingDataContract(CompositeType composite);
 
+////    // TODO: Add your service operations here
+////}
 
-        // [OperationContract]
-        // [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
-        //     BodyStyle = WebMessageBodyStyle.Wrapped,
-        //    UriTemplate = "Tasks/GetTasksForMerge/{s}")]
-        //Book GetTask(string s);
+////// Use a data contract as illustrated in the sample below to add composite types to service operations.
+////[DataContract]
+////public class CompositeType
+//{
+    //bool boolValue = true;
+    //string stringValue = "Hello ";
 
+    //[DataMember]
+    //public bool BoolValue
+    //{
+    //    get { return boolValue; }
+    //    set { boolValue = value; }
+    //}
 
-         [OperationContract]
-         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
-           ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Wrapped,
-           UriTemplate = "Tasks")]
-            void addBook(string s,valObj values);
-         //GET(ID)
-         [OperationContract]
-         [WebGet( ResponseFormat = WebMessageFormat.Json,
-             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "Tasks/TasksForMerge/{id}")]
-         valObj GetSingleTask(string id);
-         //SAVE(object)  
-         [OperationContract]
-         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "Tasks/TasksForMerge/{id}")]
-         valObj UpdateSingleTask(string id, valObj v);
-         //PUT=UPDATE (id,object)
-         [OperationContract]
-         [WebInvoke(Method = "PUT", ResponseFormat = WebMessageFormat.Json,
-             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "Tasks/TasksForMerge/{id}")]
-         valObj PutSingleTask(string id, valObj v);
-         //DELETE(id)
-         [OperationContract]
-         [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json,
-             BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "Tasks/TasksForMerges/{id}")]
-         valObj DeleteSingleTask(string id);
-
-         [OperationContractAttribute(AsyncPattern = true)]
-         [WebGet(ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare,
-           UriTemplate = "Tasks/TasksForMerge1/{id}")]
-         IAsyncResult BeginServiceAsyncMethod(string id, AsyncCallback callback, object asyncState);
-
-         // Note: There is no OperationContractAttribute for the end method.
-         string EndServiceAsyncMethod(IAsyncResult result);
-
-    
+    //[DataMember]
+    //public string StringValue
+    //{
+    //    get { return stringValue; }
+    //    set { stringValue = value; }
+    //}
 }
-
-

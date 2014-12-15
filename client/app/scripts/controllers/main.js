@@ -10,14 +10,9 @@ angular.module('web1App')
 
 var s="sarqq";
 var objArray = '';
-                 var obj = {
-                        id:"test",
-                        taskIds: 1,
-                        action: "SariSari",
-                        userName: "Sari"
-                  };
-                 objArray = new Array();
-                 objArray.push(obj);
+                 
+                 //objArray = new Array();
+                 //objArray.push(obj);
 
 /*  var postPromise=$http({
          method : 'POST',
@@ -34,12 +29,19 @@ $scope.getme=function(){
       user=myGet.get({ id: 1 }, function(data) {
               self.date=data;
               console.log(self.date)
-              console.log(user)
+         
          
 
               
               });     //}
-    }
+}
+var obj = {
+    id: "test",
+    taskIds: 1,
+    action: "SariSari",
+    userName: "Sari"
+};
+
      $scope.saveme=function(){
      myGet.save(obj,function(d) {
               self.w=d;

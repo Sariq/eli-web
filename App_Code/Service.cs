@@ -1,209 +1,138 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using System.Drawing;
-using System.Windows;
-using System.Diagnostics;
-using System.Web.Script.Serialization;
-using System.Web;
-using System.IO;
-using System.IO.Compression;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using System.Threading;
+using System.Threading.Tasks;
 
-// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
-//[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)] 
-[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession
-,ConcurrencyMode = ConcurrencyMode.Multiple)] 
-public class Service : IService
+public class Service
 {
- 
-    public int i=0;
-    //public string GetDataUsingMethod(string value){
-    //    return value + " I am returned by Method";
-    //}
-    //public Object GetDataUsingURI(String value)
-    //{
-        
-    //    //JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-    //   // myJavaScriptSerializer.Serialize(value);
-    //    Debug.WriteLine(value);
-    //    return (value); 
-    //}
-
-    //public Book json(string firstN)
-    //{
-    //    Debug.WriteLine(firstN);
-    //    //Debug.WriteLine(new Students { FirstName = "Sari", LastName = "qash" });
-    //    Book book = new Book();
-    //    book.Title = "myTitle";
-    //    book.ISBN = "123456789s789777";
-    //    book.Publisher = "sari2222";
-    //    JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-    //    string resultStr = myJavaScriptSerializer.Serialize(book);
-    //    return book;
-    //}
-
-
-    //public void SaveStudent(Students req)
-    //{
-    //    JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-    //    //Students emp=myJavaScriptSerializer.Deserialize(req, emp);
-    //    Debug.WriteLine("student!!");
-    //   // StreamReader reader = new StreamReader(req);
-    //    Debug.WriteLine(req.FirstName);
-    //    //string text =reader.ReadToEnd();
-        
-    //   // Debug.WriteLine(text);
-   
-    //}
-
-
-
-
-
-
-    //public void CreateNewTaks(valObj values)
-    //{
-       
-        //Debug.WriteLine(values.action);
-        //Debug.WriteLine(values.userName);
-        //Debug.WriteLine(values.taskIds + 7);
-
-        //MongoClient client = new MongoClient();
-        //var server = client.GetServer();
-        //var db = server.GetDatabase("bookStore");
-        //var collection = db.GetCollection<Book>("Book");
-        //Book book = new Book();
-        //book.Title = "myTitle";
-        //book.ISBN = "123456789s789777";
-        //book.Publisher = "sari2222";
-        //Convert.ToString((ObjectId.GenerateNewId()));
-        //values._id = Convert.ToString((ObjectId.GenerateNewId())); 
-        //collection.Save(values);
-
-        //MongoClient client = new MongoClient();
-        //var server = client.GetServer();
-        //var db = server.GetDatabase("myTest");
-        //var collection = db.GetCollection<valObj>("valObj");
-        //collection.Save(values);
-    //}
-
-
-    //public Book GetTask(string s)
-    //{
-    //    Debug.WriteLine("vaaaaXXXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaXXXn");
-    //     Book book = new Book();
-    //    book.Title = "myTitle";
-    //    book.ISBN = "123456789s789777";
-    //    book.Publisher = "sari2222";
-    //    return book;
-    //}
-
-
-
-    public void addBook(string s,valObj values)
+    public Service()
     {
-        //Debug.WriteLine(values.action);
-        //Debug.WriteLine(values.userName);
-        //Debug.WriteLine(values.taskIds + 7);
+        var db = GetDatabase();
+    }
 
-        //Debug.WriteLine(values.action);
-        //Debug.WriteLine(values.userName);
-        //Debug.WriteLine(values.taskIds + 7);
-
+    public MongoDatabase GetDatabase()
+    {
         MongoClient client = new MongoClient();
         var server = client.GetServer();
-        var db = server.GetDatabase("bookStore");
-        var collection = db.GetCollection<Book>("Book");
-        values.id = Convert.ToString((ObjectId.GenerateNewId()));
-        collection.Save(values);
-        
+        var database = server.GetDatabase("EliProject");
+        return database;
     }
 
-    //public Book GetSingleTask(string s)
+    public void CreateCollection(string collectionName)
+    {
+        var database = GetDatabase();
+        var collection = database.CreateCollection(collectionName);
+        //Convert.ToString((ObjectId.GenerateNewId()));
+    }
+
+    public MongoCollection GetCollection(string collectionName)
+    {
+        var database = GetDatabase();
+        var collection = database.GetCollection(collectionName);
+        return collection;
+    }
+
+
+    //public string GetData(int value)
     //{
-    //    throw new NotImplementedException();
+    //    return string.Format("You entered: {0}", value);
     //}
-    public valObj GetSingleTask(string id)
-    {
-        Thread.Sleep(10000);
-        i++;
-        Debug.WriteLine(" Instance:" +
-          i.ToString() + " Thread:" + Thread.CurrentThread.ManagedThreadId.ToString() +
-          " Time:" + DateTime.Now.ToString() + "\n\n");
+
+    //public CompositeType GetDataUsingDataContract(CompositeType composite)
+    //{
+    //    if (composite == null)
+    //    {
+    //        throw new ArgumentNullException("composite");
+    //    }
+    //    if (composite.BoolValue)
+    //    {
+    //        composite.StringValue += "Suffix";
+    //    }
+    //    return composite;
+    //}
+
+
+
+    //    public UserService MyFunction(string str)
+    //{
+    //    UserService val3 = new UserService();
+    //    val3.FirstName = "Karin";
+    //    val3.LastName = "B";
+    //    val3.UserId = "kkk";
+    //    val3.Password = "kkk";
+    //    val3._id = Convert.ToString((ObjectId.GenerateNewId()));
+
+    //    UserService val2 = new UserService();
+    //    val2.FirstName = "Sari";
+    //    val2.LastName = "Q";
+    //    val2.UserId = "sss";
+    //    val2.Password = "sss";
+    //    val2._id = Convert.ToString((ObjectId.GenerateNewId()));
+
+    //    Debug.WriteLine("str");
+
+    //    var collection = CreateCollection("User");
+    //    InsertObject(val2);
+    //    InsertObject(val3);
+
+    //    Debug.WriteLine("str");
       
-        //Debug.WriteLine("vaaaaXXXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaXXXn");
-        Book book = new Book();
-        book.Title = "myTitle";
-        book.ISBN = "123456789s789777";
-        book.Publisher = "sari2222";
-        valObj val = new valObj();
-        val.id = Convert.ToString((ObjectId.GenerateNewId()));
-        val.taskIds = 1;
-        val.action = "Karin";
-        val.userName = "Sari";
-        return val;
-    }
+    //    //RemoveFromCollection("548b038120e1de04a0192091", "B");
+    //    //UpdateInCollection(val2, "A");
+    //    //try
+    //    //{
+    //    //    var obj = GetObjById("1", "B");
 
-    public valObj UpdateSingleTask(string id, valObj v)
-   {
-       v.taskIds = 1;
-       v.action = "Sari";
-       v.userName = "Sari";
-       MongoClient client = new MongoClient();
-       var server = client.GetServer();
-       var db = server.GetDatabase("bookStore");
-       var collection = db.GetCollection<Book>("Book");
-       valObj val = new valObj();
-       val.id = Convert.ToString((ObjectId.GenerateNewId()));
-       val.taskIds = 1;
-       val.action = "Karin";
-       val.userName = "Sari";
-
-       collection.Save(val);
-       return v;
-   }
-    public valObj PutSingleTask(string id, valObj v)
-   {
-       v.taskIds = 1;
-       v.action = "Sari";
-       v.userName = "qashuw";
-
-       return v;
-   }
-    public valObj DeleteSingleTask(string id)
-   {
-       valObj val = new valObj();
-       val.id = Convert.ToString((ObjectId.GenerateNewId()));
-       val.taskIds = 1;
-       val.action = "Delete";
-       val.userName = "Delete";
-       return val;
-   }
+    //    //    Debug.WriteLine(obj);
+    //    //    return obj;
+    //    //}
+    //    //catch
+    //    //{
+    //    //    Debug.WriteLine("str");
+    //    //    return null;
+    //    //}
+    //    //var obj = GetAllObjInCollection("A");
+    //    return val2;
+    //}
 
 
-    public IAsyncResult BeginServiceAsyncMethod(string msg, AsyncCallback callback, object asyncState)
-    {
-        Thread.Sleep(2000);
-        Debug.WriteLine(msg);
-        //Console.WriteLine("BeginServiceAsyncMethod called with: \"{0}\"", msg);
-        return new CompletedAsyncResult<string>(msg);
-    }
+    //public async void InsertInCollection(MongoCollection collection, ValObject obj)
+    //{
+    //    await collection.SaveAsync(obj);
+    //}
 
-    public string EndServiceAsyncMethod(IAsyncResult r)
-    {
-        Debug.WriteLine("vaaaaXXXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaXXXn");
-        CompletedAsyncResult<string> result = r as CompletedAsyncResult<string>;
-        Debug.WriteLine("EndServiceAsyncMethod called with: \"{0}\"", result.Data);
-        return result.Data;
-    }
+    //public async void RemoveFromCollection(string id, string collectionName)
+    //{
+    //    var collection = getCollection(collectionName);
+    //    await collection.RemoveAsync(new QueryDocument("_id", id));
+    //}
 
+    //public async void UpdateInCollection(ValObject obj, string collectionName)
+    //{
+    //    var collection = getCollection(collectionName);
+    //    await collection.UpdateAsync(new QueryDocument("_id", obj._id), new UpdateDocument(new BsonDocument(obj.ToBsonDocument())));
+    //}
 
-   
+    //public async Task<ValObject> GetObject(string id, string collectionName)
+    //{
+    //    var collection = getCollection(collectionName);
+    //    var obj = await collection.FindOneAsAsync<ValObject>(new QueryDocument("_id", id));
+
+    //    return obj;
+    //}
+
+    //public async Task<List<ValObject>> GetAllObjInCollection(string collectionName)
+    //{
+    //    var collection = getCollection(collectionName);
+    //    var obj = await collection.FindAllAsAsync<ValObject>();
+
+    //    return obj.ToList<ValObject>();
+    //}
 }
