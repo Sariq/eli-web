@@ -19,7 +19,8 @@
 
 
     self.create = function(){
-      var user = {UserId: 'sariaaaa',
+        var user = {
+            UserId: 'sariaaaa',
         Password: 'sariaaaa'
       };
       return new self.authResource(user);

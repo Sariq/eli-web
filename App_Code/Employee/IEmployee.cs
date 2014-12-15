@@ -8,14 +8,14 @@ using System.Web;
 [ServiceContract]
 public interface IEmployee
 {
-    //[OperationContract]
-    //[WebInvoke (
-    //    Method = "POST", 
-    //    ResponseFormat = WebMessageFormat.Json, 
-    //    BodyStyle = WebMessageBodyStyle.Bare,
-    //    UriTemplate = "SignIn")
-    //]
-    //Employee SignIn(string id, string userId, string password);
+    [OperationContract]
+    [WebInvoke(
+        Method = "POST",
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+        UriTemplate = "SignIn")
+    ]
+    Employee SignIn(Employee employee);
 
     [OperationContract]
     [WebInvoke(

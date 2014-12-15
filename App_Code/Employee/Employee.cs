@@ -9,52 +9,30 @@ public class Employee : ValObject, IEmployee
 {
     [DataMember]
     public String UserId
-    {
-        get { return UserId; }
-        set { UserId = value; }
-    }
+    { get; set; }
 
     [DataMember]
     public String Password
-    {
-        get { return Password; }
-        set { Password = value; }
-    }
+    { get; set; }
 
     [DataMember]
     public String FirstName
-    {
-        get { return FirstName; }
-        set { FirstName = value; }
-    }
+    { get; set; }
 
     [DataMember]
     public String LastName
-    {
-        get { return LastName; }
-        set { LastName = value; }
-    }
+    { get; set; }
 
     [DataMember]
     public String Email
-    {
-        get { return Email; }
-        set { Email = value; }
-    }
-
+     { get; set; }
     [DataMember]
     public Boolean IsAdmin
-    {
-        get { return IsAdmin; }
-        set { IsAdmin = value; }
-    }
-
+    { get; set; }
     [DataMember]
     public Boolean IsOnline
-    {
-        get { return IsOnline; }
-        set { IsOnline = value; }
-    }
+       { get; set; }
+    
 
 
     public ValObject CreateNewEmployee(string userId, string password, string firstName, string lastName, string email, bool isAdmin, bool isOnline)
@@ -62,11 +40,11 @@ public class Employee : ValObject, IEmployee
         var employee = new Employee();
         employee.UserId = userId;
         employee.Password = password;
-        employee.FirstName = firstName;
-        employee.LastName = lastName;
-        employee.Email = email;
-        employee.IsAdmin = isAdmin;
-        employee.IsOnline = IsOnline;
+        //employee.FirstName = firstName;
+        //employee.LastName = lastName;
+        //employee.Email = email;
+        //employee.IsAdmin = isAdmin;
+        //employee.IsOnline = IsOnline;
         employee._id = Convert.ToString((ObjectId.GenerateNewId()));
         return employee;
     }
@@ -89,25 +67,25 @@ public class Employee : ValObject, IEmployee
         return employeeList;
     }
 
-    
-    //public Employee SignIn(string id, string userId, string password)
-    //{
-    //    var employee = GetEmployee(userId);
-    //    var isPasswordCorrect = IsPasswordCorrect(employee, password);
 
-    //    if (isPasswordCorrect)
-    //        return employee;
-    //    return null;
-    //}
+    public Employee SignIn(Employee employee)
+    {
+
+       var isPasswordCorrect = IsPasswordCorrect(employee.UserId, employee.Password);
+
+        if (isPasswordCorrect)
+            return employee;
+        return null;
+    }
 
     public void AddEmployee(ValObject employee)
     {
         InsertObject(employee, "Employee");
     }
-    
-    private Boolean IsPasswordCorrect(Employee employee, string password)
+
+    private Boolean IsPasswordCorrect(string UserId, string password)
     {
-        return (employee.password == password);
+        return (true);
     }
 
     private Employee GetEmployee(string employeUserId)
