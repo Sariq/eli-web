@@ -9,7 +9,10 @@ console.log("self.user")
   self.user.$save(function(d) {
               self.w=d;
               console.log(self.w)
-              });
+  }, function (d) {
+      self.w = d;
+      console.log(self.w)
+  });
 //UPDATE
 /*  self.user.$update(function(d) {
               self.w=d;

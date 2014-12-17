@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Web;
 
 [ServiceContract]
 public interface IEmployee
@@ -19,20 +16,46 @@ public interface IEmployee
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "Initialize")
+         UriTemplate = "AddEmployee")
     ]
-    Employee Initialize();
+    void AddEmployee(Employee employee);
 
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "AddEmployee")
+         UriTemplate = "RemoveEmployee")
     ]
-    void AddEmployee(ValObject employee);
-        
+    void RemoveEmployee(Employee employee);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "UpdateEmployee")
+    ]
+    void UpdateEmployee(Employee employee);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetEmployee")
+    ]
+    Employee GetEmployee(Employee employee);
+
+    //[OperationContract]
+    //[WebInvoke(
+    //    Method = "POST",
+    //    ResponseFormat = WebMessageFormat.Json,
+    //    BodyStyle = WebMessageBodyStyle.Bare,
+    //    UriTemplate = "EmployeeList")
+    //]
+    //List<Employee> EmployeeList(Employee employee);  
 }
