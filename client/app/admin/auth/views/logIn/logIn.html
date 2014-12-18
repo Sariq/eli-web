@@ -32,20 +32,21 @@
       </div>
               <div class="panel-body">
             
-                   
+                 
                 <div class="form-group">
-                  <input class="form-control input-lg" ng-model="logIn.user.userId" placeholder="User" type="text">
+                  <input class="form-control input-lg" ng-model="obj.user.UserId" placeholder="User" type="text">
               </div>
+                 
               <div class="form-group">
-                <input class="form-control input-lg" ng-model="logIn.user.password" placeholder="Password"  type="password" value="">
+                <input class="form-control input-lg" ng-model="obj.user.Password" placeholder="Password"  type="password" value="">
               </div>
-               {{logIn.user.credentials}}
+               
               <div class="checkbox">
                   <label>
                     <input name="remember" type="checkbox" value="Remember Me"> Remember Me
                   </label>
                 </div>
-              <input class="btn btn-lg btn-success btn-block" ng-click="logIn.logIn()"  value="Login">
+              <input class="btn btn-lg btn-success btn-block" ng-click="logIn()"  value="Login">
            
       
           </div>
@@ -54,7 +55,7 @@
 </div> 
 <style type="text/css">
 body{
-    background: url(client/app/images/login-wallpaper.jpg);
+    background: url(..//images/login-wallpaper.jpg);
  
 }
 

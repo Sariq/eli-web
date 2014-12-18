@@ -2,18 +2,6 @@
 	<title>Eli</title> 
 
 
-	
-	<link rel="stylesheet" href="client/app/styles/fancybox/jquery.fancybox-v=2.1.5.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="client/app/styles/font-awesome.min.css" rel="stylesheet">
-	
-	<link rel="stylesheet" type="text/css" href="client/app/styles/style.css">	
-	
-	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	
-	
-	<link rel="prefetch" href="client/app/images/zoom.png">
-		
-
 
 
 	<div class="navbar navbar-fixed-top" data-activeslide="1">
@@ -27,17 +15,26 @@
 			</button>
 			
 			
-			<div class="nav-collapse collapse navbar-responsive-collapse">
-				<ul class="nav row">
-					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-1" href="#slide-1" title="Next Section"><span class="icon icon-home"></span> <span class="text">HOME</span></a></li>
-					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2" href="#slide-2" title="Next Section"><span class="icon icon-user"></span> <span class="text">ABOUT US</span></a></li>
-					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#slide-3" title="Next Section"><span class="icon icon-briefcase"></span> <span class="text">PORTFOLIO</span></a></li>
-					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4" href="#slide-4" title="Next Section"><span class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
-					<li data-slide="5" class="col-12 col-sm-2"><a id="menu-link-5" href="#slide-5" title="Next Section"><span class="icon icon-heart"></span> <span class="text">CLIENTS</span></a></li>
-					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"><span class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>
+			<div class=" nav-collapse  navbar-responsive-collapse ">
+				<ul class=" nav row">
+						
+					<li data-slide="6" class="col-12 col-sm-2"  ><a  id="menu-link-1" href="#slide-1" title="Next Section"> <span class="text" >צור קשר&nbsp;<span class="icon icon-envelope" ></span></span></a></li>
+					
+					<li data-slide="5" class="col-12 col-sm-2"><a id="menu-link-5" href="#slide-5" title="Next Section"> <span class="text">אודותינו&nbsp;<span class="icon icon-user"></span></span></a></li>
+					
+					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4" href="#slide-4" title="Next Section"> <span class="text">מידע&nbsp;
+					<span class="icon icon-info"></span></span></a></li>
+
+					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#slide-3" title="Next Section"> <span class="text">איך תוכלו לעזור לנו&nbsp;
+					<span class="icon icon-briefcase"></span></span></a></li>
+
+					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2" href="#slide-2" title="Next Section"> <span class="text">מה אנחנו עושים&nbsp;<span class="icon icon-heart"></span></span></a></li>
+					
+					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"> <span class="text">בית&nbsp;<span class="icon icon-home"></span></span></a></li>
+				
 				</ul>
-				<div class="row">
-					<div class="col-sm-2 active-menu"></div>
+				<div class=" row">
+					<div class=" col-sm-2 active-menu"></div>
 				</div>
 			</div><!-- /.nav-collapse -->
 		</div><!-- /.container -->
@@ -52,7 +49,8 @@
 		<div id="arrow-right" class="disabled visible-lg"></div>
 	</div><!-- /.arrows -->
 	
-	
+
+
 	<!-- === MAIN Background === -->
 	<div class="slide story" id="slide-1" data-slide="1">
 		<div class="container">
@@ -65,9 +63,9 @@
 				</div><!-- /col-12 -->
 			</div><!-- /row -->
 			<div id="home-row-2" class="row clearfix">
-				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="4"><img src="client/app/images/s02.png"></div><span>PROFESSIONAL</span></div>
-				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="3"><img src="client/app/images/s01.png"></div><span>FRIENDLY</span></div>
-				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="5"><img src="client/app/images/s03.png"></div><span>SUITABLE</span></div>
+				<div class="col-12 col-sm-4"><a href="#logIn"><div class="home-hover"><img src="client/app/images/s02.png"></div></a><span class="font-semibold text-primary">מה אנחנו עושים</span></div>
+				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="3"><img src="client/app/images/s01.png"></div><span class="font-semibold text-primary">מידע</span></div>
+				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="5"><img src="client/app/images/s03.png"></div><span class="font-semibold text-primary">איך תוכלו לעזור לנו</span></div>
 			</div><!-- /row -->
 		</div><!-- /container -->
 	</div><!-- /slide1 -->
@@ -76,34 +74,56 @@
 	<div class="slide story" id="slide-2" data-slide="2">
 		<div class="container">
 			<div class="row title-row">
-				<div class="col-12 font-thin">Contrary to popular belief, <span class="font-semibold">Lorem Ipsum</span> is not simply random text.</div>
+				<div class="col-12 font-thin"> <span class="font-semibold">מה אנחנו עושים</span> </div>
 			</div><!-- /row -->
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
-			<div class="row subtitle-row">
+		<!-- 	<div class="row subtitle-row">
 				<div class="col-12 font-thin">This is what <span class="font-semibold">we do best</span></div>
-			</div><!-- /row -->
+			</div><!-- /row --> 
 			<div class="row content-row">
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><i class="icon icon-eye-open"></i></p>
-					<h2 class="font-thin">Visual <span class="font-semibold">Identity</span></h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+					<p><img src="client/app/images/doing1.jpg" class="img-circle" width="150" height="150"></i></p>
+					<h2 class="font-thin"><span class="font-semibold">מחלקת ההסברה​ והמניעה</span></h2>
+					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><i class="icon icon-laptop"></i></p>
-					<h2 class="font-thin">Web <span class="font-semibold">Design</span></h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+					<p><img src="client/app/images/doing2.jpg" class="img-circle" width="150" height="150"></i></p>
+					<h2 class="font-thin"> <span class="font-semibold">המרכז הקליני</span></h2>
+					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><i class="icon icon-tablet"></i></p>
-					<h2 class="font-thin">Mobile <span class="font-semibold">Apps</span></h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+					<p><img src="client/app/images/doing3.jpg" class="img-circle" width="150" height="150"></i></p>
+					<h2 class="font-thin"> <span class="font-semibold">המחלקה לילדים עם צרכים מיוחדים</span></h2>
+					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><i class="icon icon-pencil"></i></p>
+					<p><img src="client/app/images/doing1.jpg" class="img-circle" width="150" height="150"></i></p>
+					<h2 class="font-semibold">מכללת אל"י</h2>
+					<h4 class="font-thin"></h4>
+				</div><!-- /col12 -->
+			</div><!-- /row -->
+					<div class="row content-row">
+				<div class="col-12 col-lg-3 col-sm-6">
+					<p><img src="client/app/images/doing4.jpg" class="img-circle" width="150" height="150"></i></p>
+					<h2 class="font-thin"> <span class="font-semibold">קו המצוקה</span></h2>
+					<h4 class="font-thin"></h4>
+				</div><!-- /col12 -->
+				<div class="col-12 col-lg-3 col-sm-6">
+					<p><img src="client/app/images/doing5.jpg" class="img-circle" width="150" height="150"></i></p>
+					<h2 class="font-thin"> <span class="font-semibold">המחלקה הרב תרבותית</span></h2>
+					<h4 class="font-thin"></h4>
+				</div><!-- /col12 -->
+				<div class="col-12 col-lg-3 col-sm-6">
+					<p><img src="client/app/images/doing6.jpg" class="img-circle" width="150" height="150"></p>
+					<h2 class="font-thin"> <span class="font-semibold">מחלקת בטיחות ברשת (אינטרנט)</span></h2>
+					<h4 class="font-thin"></h4>
+				</div><!-- /col12 -->
+				<div class="col-12 col-lg-3 col-sm-6">
+					<p><img src="client/app/images/doing7.jpg" class="img-circle" width="150" height="150"></p>
 					<h2 class="font-semibold">Development</h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 			</div><!-- /row -->
 		</div><!-- /container -->
@@ -112,6 +132,7 @@
 	<!-- === SLide 3 - Portfolio -->
 	<div class="slide story" id="slide-3" data-slide="3">
 		<div class="row">
+			
 			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="client/app/images/portfolio/p01-large.jpg"><img class="thumb" src="client/app/images/portfolio/p01-small.jpg" alt=""></a></div>
 			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="client/app/images/portfolio/p02-large.jpg"><img class="thumb" src="client/app/images/portfolio/p02-small.jpg" alt=""></a></div>
 			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="client/app/images/portfolio/p09-large.jpg"><img class="thumb" src="client/app/images/portfolio/p09-small.jpg" alt=""></a></div>
@@ -131,43 +152,40 @@
 	<div class="slide story" id="slide-4" data-slide="4">
 		<div class="container">
 			<div class="row title-row">
-				<div class="col-12 font-thin">See us <span class="font-semibold">at work</span></div>
+				<div class="col-12 font-thin"><span class="font-semibold">מידע</span></div>
 			</div><!-- /row -->
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
-			<div class="row subtitle-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-10 font-light">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-			<div class="row content-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-2">
-					<p><i class="icon icon-bolt"></i></p>
-					<h2 class="font-thin">Listening to<br><span class="font-semibold" >your needs</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
+			<!-- /row --> 
+			<div class="row content-row ">
+					<div class="col-12 col-sm-3">
+					<p><i class="icon icon-suitcase"></i></p>
+					<h2 class="font-thin">מידע<br><span class="font-semibold" >לתורמים</span></h2>
+					<h4 class="font-thin text-right" >
+
+						הורים יקרים,אנו באל"י יודעים כי ההורות אינה פשוטה וכי פעמים רבות אתם נתקלים בקונפליקטים 
+						וקשיים רבים הקשורים לילדיכם. אנו כאן כדי לעזור </h4>
 				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2">
-					<p><i class="icon icon-cog"></i></p>
-					<h2 class="font-thin">Project<br><span class="font-semibold">discovery</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2">
-					<p><i class="icon icon-cloud"></i></p>
-					<h2 class="font-thin">Storming<br><span class="font-semibold">our brains</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2">
-					<p><i class="icon icon-map-marker"></i></p>
-					<h2 class="font-thin">Getting<br><span class="font-semibold">there</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-				<div class="col-12 col-sm-2">
+				
+				<div class="col-12 col-sm-3">
 					<p><i class="icon icon-gift"></i></p>
-					<h2 class="font-thin">Delivering<br><span class="font-semibold">the product</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
+					<h2 class="font-thin">מידע<br><span class="font-semibold" >להורים</span></h2>
+					<h4 class="font-thin text-right">הורים יקרים,
+					אנו באל"י יודעים כי ההורות אינה פשוטה וכי פעמים רבות 
+					אתם נתקלים בקונפליקטים וקשיים רבים הקשורים לילדיכם. אנו כאן כדי לעזור</h4>
 				</div><!-- /col12 -->
+				<div class="col-12 col-sm-3">
+					<p><i class="icon icon-cog"></i></p>
+					<h2 class="font-thin">מידע<br><span class="font-semibold">לאנשי מקצוע</span></h2>
+					<h4 class="font-thin text-right">עבודה עם נפגעי התעללות ועם ילדים פוגעים מינית מצריכה ידע רב, היכנסו ומיצאו מאמרים, כתבות והמלצות לקריאה</h4>
+				</div><!-- /col12 -->
+				<div class="col-12 col-sm-3">
+					<p><i class="icon icon-group"></i></p>
+					<h2 class="font-thin">מידע<br><span class="font-semibold">לילדים ובני נוער</span></h2>
+					<h4 class="font-thin text-right">כולם חושבים שבגלל שאתם ילדים/בני נוער אין לכם דאגות. אנחנו באלי יודעים שפעמים רבות זה ממש לא נכון. אנחנו כאן בשבילכם</h4>
+				</div><!-- /col12 -->
+			
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 		</div><!-- /container -->
@@ -177,23 +195,25 @@
 	<div class="slide story" id="slide-5" data-slide="5">
 		<div class="container">
 			<div class="row title-row">
-				<div class="col-12 font-thin"><span class="font-semibold">Clients</span> we’ve worked with</div>
+				<div class="col-12 font-thin"><span class="font-semibold"> האגודה להגנת הילד</span></div>
 			</div><!-- /row -->
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
-			<div class="row subtitle-row">
+			<br>
+			<div class="row text-right lead">
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-10 font-light">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. <br/><br/> The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero.</div>
+				<div class="col-12 col-sm-10 font-light">אל"י הוקמה בשנת 1979 על ידי ד"ר חניתה צימרין על מנת להתמודד עם בעיית ההתעללות בילדים. אל"י הינה עמותה, רשומה כמלכ"ר, אשר התמחותה הוא נושא ההתעללות בילדים. אל"י היא זו שהעלתה את הנושא על סדר היום הציבורי והיא הגוף היחיד בארץ המטפל בכל היבטיה של התופעה. כמו כן לקחה העמותה על עצמה מחוייבות לזהות מגמות ותופעות חדשות בתחום ההתעללות בילדים ולהציע פתרונות מתאימים. מטרות העמותה: הגברת מודעות לתופעת ההתעללות בילדים. טיפול בקורבנות התעללות ובני משפחותיהם. מניעת התעללות בילדים. פיתוח ידע בתחום ההתעללות בילדים והפצתו <br/><br/> למרות שהמסורת יהודית מוקירה ילדים כאפוטרופוסים של עתידנו, החברה של היום סובלת מכל המחלות של חיים מודרניים. בישראל, סקר שנערך לאחרונה הראה כי 40,000 ילדים, לפחות 1.5% מכלל אוכלוסיית הילדים, הם קורבנות של אכזריות, הזנחה או התעללות רגשית, פיזית ומינית. שירותים טיפוליים הוכיחו כמתודולוגיה היעילה ביותר לטיפול באלימות במשפחה והדרך היחידה לשבור את מעגל ההתעללות לאורך דורות. האגודה הישראלית להגנת ילד (אל"י) מוכרת על ידי ממשלת ישראל וגופים אחרים כארגון היחיד בישראל העוסק באופן ספציפי ובלעדי בכל ההיבטים השונים של התעללות בילדים. הארגון פועל ללא לאות כדי להגביר את המודעות לבעיה, על ידי: חינוך הציבור רחב, הכשרה של אנשי מקצוע, השפעה על מקבלי החלטות ומדיניות ועל ידי מתן מידע חיוני לקורבנות פוטנציאלים, הוריהם ובני משפחתם - וכל זאת בכדי להגביר את היכולת של אל"י לספק סיוע. הצוות המקצועי של אל"י והמתנדבים שעברו הכשרה מיוחדת, הם ייחודיים בגישתם, ומציעים כניסה חד נקודתית לשירותים מקיפים: טיפול משפחתי, ייעוץ משפטי וכל שירותי תמיכה הנדרשים מבלי ללכת ממסוכנות לסוכנות. לפיכך, אל"י מספקת ספקטרום מתואם לחלוטין של שירותים, לא רק לילדים שעברו התעללות או הזנחה, אלא גם למבוגרים שהיו קורבנות של התעללות בילדותם, הורים מתעללים שזקוקים לעזרה כדי להתגבר על הבעיה וילדים הפוגעים בילדים אחרים. אל"י מציעה טיפולים פרטניים, קבוצתיים וטיפול משפחתי בערים שונות ברחבי מדינת ישראל ומספקת תמיכה רחבה הן לילדים עצמם והן לבני משפחתם</div>
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 			<div class="row content-row">
 				<div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-2"><img src="client/app/images/client01.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="client/app/images/client02.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="client/app/images/client03.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="client/app/images/client04.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="client/app/images/client05.png" alt=""></div>
+
+				<div class="col-12 col-sm-2"></div>
+				<div class="col-12 col-sm-2"></div>
+						<div class="col-12 col-sm-2"><img src="client/app/images/eliLogo1.png" alt=""></div>
+				<div class="col-12 col-sm-2"></div>
+				<div class="col-12 col-sm-2"></div>
 				<div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 		</div><!-- /container -->
@@ -203,37 +223,37 @@
 	<div class="slide story" id="slide-6" data-slide="6">
 		<div class="container">
 			<div class="row title-row">
-				<div class="col-12 font-light">Leave us a <span class="font-semibold">message</span></div>
+				<div class="col-12 font-light">השאר לנו <span class="font-semibold">הודעה</span></div>
 			</div><!-- /row -->
 			<div class="row line-row">
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
 			<div class="row subtitle-row">
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-10 font-light">You can find us literally anywhere, just push a button and we’re there</div>
+				<div class="col-12 col-sm-10 font-light">תוכל למצוא אותנו בכל מקום, פשוט ללחוץ על הכפתור ואנחנו שם</div>
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 			<div id="contact-row-4" class="row">
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-phone"></i></a></p>
-					<span class="hover-text font-light ">+44 4839-4343</span></a>
+					<span class="hover-text font-light ">03-6091930</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-envelope"></i></a></p>
-					<span class="hover-text font-light ">munter@blacktie.co</span></a>
+					<span class="hover-text font-light ">eliforchild@eli.com</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-home"></i></a></p>
-					<span class="hover-text font-light ">London, England<br>zip code 98443</span></a>
+					<span class="hover-text font-light "> אבן גבירול 14 , תל אביב</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-facebook"></i></a></p>
-					<span class="hover-text font-light ">facebook/blacktie_co</span></a>
+					<span class="hover-text font-light ">facebook/eliforchild</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-twitter"></i></a></p>
-					<span class="hover-text font-light ">@BlackTie_co</span></a>
+					<span class="hover-text font-light ">@eliforchild</span></a>
 				</div><!-- /col12 -->
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
@@ -242,20 +262,20 @@
 	
 
 
-	<!-- SCRIPTS -->
-	<script src="client/app/scripts/html5shiv.js"></script>
-	<script src="client/app/scripts/jquery-1.10.2.min.js"></script>
-	<script src="client/app/scripts/jquery-migrate-1.2.1.min.js"></script>
+  <script src="client/app/scripts/html5shiv.js"></script>
+  <script src="client/app/scripts/jquery-1.10.2.min.js"></script>
+  <script src="client/app/scripts/jquery-migrate-1.2.1.min.js"></script>
 
-	<script src="client/app/scripts/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="client/app/styles/fancybox/jquery.fancybox.pack-v=2.1.5.js"></script>
-	<script src="client/app/scripts/script.js"></script>
-	
-	<!-- fancybox init -->
+  <script src="client/app/scripts/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="client/app/styles/fancybox/jquery.fancybox.pack-v=2.1.5.js"></script>
+  <script src="client/app/scripts/script.js"></script>
+
+	<!-- fancybox init 
 	<script>
 	$(document).ready(function(e) {
 		var lis = $('.nav > li');
-		menu_focus( lis[0], 1 );
+		//console.log(lis)
+		menu_focus( lis[5], 1 );
 		
 		$(".fancybox").fancybox({
 			padding: 10,
@@ -266,6 +286,4 @@
 			}
 		});
 	
-	});
-	</script>
-
+	});</script>-->

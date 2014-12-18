@@ -9,7 +9,9 @@ $(document).ready(function(e) {
 	* Hover text for the last slide
 	***************/
 	$('.with-hover-text').hover(
+
 		function(e) {
+
 			$(this).css('overflow', 'visible');
 			$(this).find('.hover-text')
 				.show()
@@ -50,13 +52,16 @@ $(document).ready(function(e) {
 	* Hover text for the last slide
 	*************************/
 	$('#slide-3 img').each(function(index, element) {
+
 		var time = new Date().getTime();
 		var oldHref = $(this).attr('src');
 		var myImg = $('<img />').attr('src', oldHref + '?' + time );
 		
 		myImg.load(function(e) {
+
 			img_loaded += 1;;
 			if ( img_loaded == $('#slide-3 img').length ) {
+
 				$(function() {
 					var pause = 10;
 					$(document).scroll(function(e) {
@@ -67,14 +72,14 @@ $(document).ready(function(e) {
 							$('.story').each(function(index, element) {
 								tops.push( $(element).offset().top - 200 );
 							});
-				
+							//console.log(tops)//tops=slides locations
 							var scroll_top = $(this).scrollTop();
-							
+							//console.log(scroll_top)//location while scrollin
 							var lis = $('.nav > li');
-							
+								//console.log(lis)//which tab is active
 							for ( var i=tops.length-1; i>=0; i-- ) {
 								if ( scroll_top >= tops[i] ) {
-									menu_focus( lis[i], i+1 );
+									menu_focus( lis[tops.length-1-i], i+1 );
 									break;
 								}
 							}
@@ -95,9 +100,10 @@ $(document).ready(function(e) {
 $(function() {
 	var pause = 50; // will only process code within delay(function() { ... }) every 100ms.
 	$(window).resize(function() {
+
 		delay(function() {
 				var gallery_images = $('#slide-3 img');
-				
+		
 				var images_per_row = 0;
 				if ( gallery_images.length % 2 == 0 ) {
 					images_per_row = gallery_images.length / 2;
@@ -126,6 +132,7 @@ $(function() {
 });
 
 var delay = (function(){
+	
 	var timer = 0;
 	return function(callback, ms){
 		clearTimeout (timer);
@@ -134,6 +141,7 @@ var delay = (function(){
 })();
 
 function menu_focus( element, i ) {
+
 	if ( $(element).hasClass('active') ) {
 		if ( i == 6 ) {
 			if ( $('.navbar').hasClass('inv') == false )
@@ -154,13 +162,18 @@ function menu_focus( element, i ) {
 	$(element).addClass('active');
 	
 	var icon = $(element).find('.icon');
-	
+    var tx = $(element).find('.text');
+    var tx_pos=tx.offset().left - $('.nav').offset().left;
 	var left_pos = icon.offset().left - $('.nav').offset().left;
-	var el_width = icon.width() + $(element).find('.text').width() + 10;
-	
+	var el_width = icon.width() + $(element).find('.text').width() - 10;
+		//console.log(left_pos)
+		//console.log(tx_pos)
+
+
+
 	$('.active-menu').stop(false, false).animate(
 		{
-			left: left_pos,
+			left: tx_pos,
 			width: el_width
 		},
 		1500,
@@ -192,7 +205,7 @@ jQuery(document).ready(function ($) {
 	button = $('.button');
 	mywindow = $(window);
 	htmlbody = $('html,body');
-	
+		
 	//Create a function that will be passed a slide number and then will scroll to that slide using jquerys animate. The Jquery
 	//easing plugin is also used, so we passed in the easing method of 'easeInOutQuint' which is available throught the plugin.
 	function goToByScroll(dataslide) {
@@ -208,11 +221,13 @@ jQuery(document).ready(function ($) {
 		e.preventDefault();
 		dataslide = $(this).attr('data-slide');
 		goToByScroll(dataslide);
-		$(".nav-collapse").collapse('hide');
+		//$(".nav-collapse").collapse('hide');
+	
 	});
 	
 	//When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
 	$('.navigation-slide').click(function (e) {
+		alert()
 		e.preventDefault();
 		dataslide = $(this).attr('data-slide');
 		goToByScroll(dataslide);
@@ -230,12 +245,13 @@ jQuery(document).ready(function ($) {
 	menu_item.hover(
 		function(e) {
 			var icon = $(this).find('.icon');
-			
+			  var tx = $(this).find('.text');
+   			 var tx_pos=tx.offset().left - $('.nav').offset().left;
 			var left_pos = icon.offset().left - $('.nav').offset().left;
-			var el_width = icon.width() + $(this).find('.text').width() + 10;
+			var el_width = icon.width() + $(this).find('.text').width() - 10;
 			
 			var hover_bar = $('<div class="active-menu special-active-menu"></div>')
-				.css('left', left_pos)
+				.css('left', tx_pos)
 				.css('width', el_width)
 				.attr('id', 'special-active-menu-' + $(this).data('slide') );
 			

@@ -1,7 +1,10 @@
 (function () {
   function MainCtrl(MainService) {
     var self = this;
-    console.log(MainService);
+    //console.log("MainService");
+    self.alertme=function(){
+    	alert("yess");
+    }
 
   }
 

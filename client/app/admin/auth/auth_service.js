@@ -5,6 +5,7 @@
 
    
     var self = this;
+    self.userInfo={};
     self.authResource = $resource('http://localhost:82\:82/EmployeeService.svc/SignIn/:id', {}, { update: { method: 'PUT' } });
 
 
@@ -17,10 +18,16 @@
 
 
 
+     self.setUserInfo = function(userInfo){
 
+        self.userInfo=userInfo;
+    };
+    self.getUserInfo = function(userInfo){
+      return self.userInfo;
+    };
     self.create = function(){
-      var user = {userId: '',
-        password: ''
+      var user = {UserId: '',
+        Password: ''
       };
       return new self.authResource(user);
     };
@@ -36,7 +43,9 @@
       return $http.get('/api/v1/auth/logout');
     }
     self.login= function(inputs) {
-      return inputs.$save();
+      return inputs.$save(function(){
+        console.log("sss")
+      });
     }
     self.register= function(inputs) {
       return $http.post('/api/v1/auth/register', inputs);
@@ -61,7 +70,7 @@
     return self;
   }
 
-  angular.module('eliApp')
+  angular.module('eli.admin')
     .service('AuthService', ['$resource',AuthService])
 }());
       
