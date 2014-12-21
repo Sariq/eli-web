@@ -3,7 +3,6 @@
 
 
 
-
 	<div class="navbar navbar-fixed-top" data-activeslide="1">
 		<div class="container">
 		
@@ -30,7 +29,7 @@
 
 					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2" href="#slide-2" title="Next Section"> <span class="text">מה אנחנו עושים&nbsp;<span class="icon icon-heart"></span></span></a></li>
 					
-					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"> <span class="text">בית&nbsp;<span class="icon icon-home"></span></span></a></li>
+					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"> <span class="text">{{ 'HOME' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
 				
 				</ul>
 				<div class=" row">
@@ -158,9 +157,17 @@
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
 			<!-- /row --> 
-			<div class="row content-row ">
-					<div class="col-12 col-sm-3">
-					<p><i class="icon icon-suitcase"></i></p>
+
+
+            
+
+
+
+
+            <br />
+            <div class="row content-row ">
+					<div class="col-12 col-sm-3" >
+					<a href="#logIn"><p><i class="icon icon-suitcase"></i></p></a>
 					<h2 class="font-thin">מידע<br><span class="font-semibold" >לתורמים</span></h2>
 					<h4 class="font-thin text-right" >
 
@@ -169,7 +176,7 @@
 				</div><!-- /col12 -->
 				
 				<div class="col-12 col-sm-3">
-					<p><i class="icon icon-gift"></i></p>
+					<a href="#forParents"><p><i class="icon icon-gift"></i></p></a>
 					<h2 class="font-thin">מידע<br><span class="font-semibold" >להורים</span></h2>
 					<h4 class="font-thin text-right">הורים יקרים,
 					אנו באל"י יודעים כי ההורות אינה פשוטה וכי פעמים רבות 
@@ -235,6 +242,7 @@
 			</div><!-- /row -->
 			<div id="contact-row-4" class="row">
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
+
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-phone"></i></a></p>
 					<span class="hover-text font-light ">03-6091930</span></a>
@@ -248,7 +256,7 @@
 					<span class="hover-text font-light "> אבן גבירול 14 , תל אביב</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="#"><i class="icon icon-facebook"></i></a></p>
+					<p><a target="_blank" href="http://facebook.com/eliforchild"><i class="icon icon-facebook"></i></a></p>
 					<span class="hover-text font-light ">facebook/eliforchild</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
@@ -260,6 +268,7 @@
 		</div><!-- /container -->
 	</div><!-- /Slide 6 -->
 	
+
 
 
   <script src="client/app/scripts/html5shiv.js"></script>
@@ -287,3 +296,17 @@
 		});
 	
 	});</script>-->
+
+
+<script>
+
+    jQuery(document).ready(function ($) {
+
+
+        htmlbody = $('html,body');
+        htmlbody.stop(false, false).animate({
+            scrollTop: 0
+        }, 0, 'easeInOutQuart');
+
+    })
+</script>

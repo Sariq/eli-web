@@ -228,7 +228,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     width: 100%;
-    min-height: 1000px;
+    min-height: 100%;
 	background-attachment: relative;
 	background-position: center center;
 }
@@ -350,10 +350,7 @@ body {
 		font-weight: 300;
 	}
 	
-	i {
-		font-size: 80px;
-		color: white;
-	}
+
 	
 
 @media (max-width: 767px) {
@@ -483,6 +480,11 @@ body {
 		color: inherit;
 		outline: none;
 		text-decoration: none;
+	}
+
+    #slide-6	i {
+		font-size: 80px;
+		color: white;
 	}
 
 @media (max-width: 767px) {

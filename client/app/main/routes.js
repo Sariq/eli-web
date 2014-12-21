@@ -1,22 +1,20 @@
+
 (function () {
 
-  function routes($routeProvider) {
-      $routeProvider
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: ''
 
+    function routes($stateProvider, $urlRouterProvider, $resourceProvider) {
 
-      })
-      .when('/main', {
-        templateUrl: 'main/views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        $stateProvider
+       .state('main', {
+           url: '/main',
+           templateUrl: 'client/app/main/views/main.html',
+           controller: 'MainCtrl',
+           controllerAs: 'main'
 
-      })
-
-  }
-  angular.module('eliApp')
-    .config(['$routeProvider',routes])
+       })
+        $urlRouterProvider.otherwise('/');
+    }
+    angular.module('eliApp')
+      .config(['$stateProvider', '$urlRouterProvider', '$resourceProvider', routes])
 
 }());

@@ -1,9 +1,14 @@
-
+var mytops = [];
 $(document).ready(function(e) {
 	$('.with-hover-text, .regular-link').click(function(e){
 		e.stopPropagation();
 	});
-	
+  
+
+	$('.story').each(function (index, element) {
+	    mytops.push($(element).offset().top - 200);
+	});
+	//alert(mytops.length)
 	/***************
 	* = Hover text *
 	* Hover text for the last slide
@@ -66,19 +71,23 @@ $(document).ready(function(e) {
 					var pause = 10;
 					$(document).scroll(function(e) {
 						delay(function() {
-							
+						
 							var tops = [];
 							
-							$('.story').each(function(index, element) {
+							$('.story').each(function (index, element) {
+							    $(element).css("height", (window.innerHeight) + "px");
 								tops.push( $(element).offset().top - 200 );
 							});
 							//console.log(tops)//tops=slides locations
 							var scroll_top = $(this).scrollTop();
-							//console.log(scroll_top)//location while scrollin
+						
+				
+							console.log(scroll_top)//location while scrollin
 							var lis = $('.nav > li');
 								//console.log(lis)//which tab is active
 							for ( var i=tops.length-1; i>=0; i-- ) {
-								if ( scroll_top >= tops[i] ) {
+							    if (scroll_top >= tops[i]) {
+							     //   console.log(lis[tops.length - 1 - i])
 									menu_focus( lis[tops.length-1-i], i+1 );
 									break;
 								}
@@ -86,6 +95,8 @@ $(document).ready(function(e) {
 						},
 						pause);
 					});
+					
+				
 					$(document).scroll();
 				});
 			}
@@ -143,7 +154,7 @@ var delay = (function(){
 function menu_focus( element, i ) {
 
 	if ( $(element).hasClass('active') ) {
-		if ( i == 6 ) {
+	    if (i == mytops) {
 			if ( $('.navbar').hasClass('inv') == false )
 				return;
 		} else {
@@ -153,7 +164,7 @@ function menu_focus( element, i ) {
 	
 	enable_arrows( i );
 		
-	if ( i == 1 || i == 6 )
+	if (i == 1 || i == mytops)
 		$('.navbar').removeClass('inv');
 	else
 		$('.navbar').addClass('inv');
@@ -186,7 +197,7 @@ function enable_arrows( dataslide ) {
 	if ( dataslide != 1 ) {
 		$('#arrow-up').removeClass('disabled');
 	}
-	if ( dataslide != 6 ) {
+	if (dataslide != mytops) {
 		$('#arrow-down').removeClass('disabled');
 	}
 	if ( dataslide == 3 ) {
@@ -218,8 +229,16 @@ jQuery(document).ready(function ($) {
 	
 	//When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
 	links.click(function (e) {
-		e.preventDefault();
+	    
+	    
 		dataslide = $(this).attr('data-slide');
+		console.log(dataslide)
+		if (dataslide != 0) {
+		    e.preventDefault();
+		} else { return }
+		   
+		
+        
 		goToByScroll(dataslide);
 		//$(".nav-collapse").collapse('hide');
 	
@@ -227,7 +246,7 @@ jQuery(document).ready(function ($) {
 	
 	//When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
 	$('.navigation-slide').click(function (e) {
-		alert()
+	
 		e.preventDefault();
 		dataslide = $(this).attr('data-slide');
 		goToByScroll(dataslide);
@@ -308,7 +327,7 @@ jQuery(document).ready(function ($) {
 	
 	arrows.click(function(e) {
 		e.preventDefault();
-		
+	
 		if ( $(this).hasClass('disabled') )
 			return;
 		

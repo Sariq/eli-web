@@ -17,7 +17,7 @@
   <body ng-app="eliApp" ng-controller="LogInCtrl">
 
     <div ui-view=""></div>
-
+      <div ng-include='"client/app/templates/chat.html"'></div>
 
         <script src="client/app/bower_components/jquery/jquery.js"></script>
         <script src="client/app/bower_components/angular/angular.js"></script>
@@ -26,7 +26,9 @@
         <script src="client/app/bower_components/angular-resource/angular-resource.js"></script>
         <script src="client/app/bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="client/app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      
+        <script src="client/app/bower_components/angular-animate/angular-animate.js"></script>
+         <script src="client/app/bower_components/angular-translate/angular-translate.js"></script>
+
         <!-- app -->
         <script src="client/app/scripts/eli-app.js"></script>
         <!-- app -->
@@ -34,6 +36,7 @@
         <!--main-->
         <script src="client/app/main/views/main.js"></script>
         <script src="client/app/main/main_service.js"></script>
+        <script src="client/app/main/routes.js"></script>  
         <!--main-->
 
         <!--auth-->
@@ -48,5 +51,9 @@
       
         <script src="client/app/admin/routes.js"></script>  
         <!--admin-->
+        
+        <!--information-->
+        <script src="client/app/information/routes.js"></script>  
+        <!--information-->
 </body>
 </html>

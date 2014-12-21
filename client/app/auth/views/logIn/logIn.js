@@ -1,7 +1,8 @@
 (function () {
-  function LogInCtrl(AuthService,$scope) {
+    function LogInCtrl(AuthService, $scope, $location) {
     var self = this;
-    self.test=''
+    self.test = ''
+    console.log("LOGIN");
     self.user = AuthService.create();
 
      $scope.$on('authLoaded', function() {
@@ -10,20 +11,34 @@
     $scope.isMember($scope.main.serieId);*/
   });
  
+     $scope.names = [];
+     var data = [];
+     for (var i = 0; i < 100; i++) {
+         data.push('item' + i)
+     }
+     $scope.add = function () {
+         if (data.length) $scope.names.splice(0, 0, data.pop());
+     };
+     $scope.remove = function (index) {
+         $scope.names.splice(index, 1);
+     };
+
+
 
 
 
     self.logIn=function(){
-
+        console.log(self.user)
     self.user.$save(function(d) {
               self.user =d;
               console.log(self.user)
                //$scope.$broadcast("authLoaded");
 
               },function(d) {
-              self.error =d;
+                  self.error = d;
+                  console.log("self.error")
               console.log(self.error)
-               self.user.password=''
+               //self.user.Password=''
               });
       
     
@@ -69,5 +84,5 @@
   }
 
   angular.module('eliApp')
-    .controller('LogInCtrl', ['AuthService','$scope',LogInCtrl]);
+    .controller('LogInCtrl', ['AuthService', '$scope', '$location', LogInCtrl]);
 }());
