@@ -6,7 +6,7 @@
    
     var self = this;
     self.userInfo={};
-    self.authResource = $resource('http://localhost:82\:82/EmployeeService.svc/SignIn/:id', {}, { update: { method: 'PUT' } });
+    self.authResource = $resource('http://localhost:83\:83/EmployeeService.svc/SignIn/:id', {}, { update: { method: 'PUT' } });
 
 
     self.get = function(auth_id){

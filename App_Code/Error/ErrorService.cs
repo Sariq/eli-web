@@ -2,6 +2,7 @@
 {
     public void AddError(Error error)
     {
-        InsertObject(error, "Error");
+        Error e = new Error(Error.ErrorType.Password);
+        InsertObject(e, "Error");
     }
 }
