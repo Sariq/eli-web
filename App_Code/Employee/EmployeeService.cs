@@ -69,9 +69,10 @@ public class EmployeeService : DatabaseActions, IEmployee
 
     public Employee GetEmployee(Employee employee)
     {
+
         try
         {
-            return GetObject<Employee>("UserId", employee._userId, "Employee").Result;
+            return GetObject<Employee>("_userId", employee._userId, "Employee").Result;
         }
         catch
         {

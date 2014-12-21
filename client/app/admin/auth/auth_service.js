@@ -26,8 +26,8 @@
       return self.userInfo;
     };
     self.create = function(){
-      var user = {userId: '',
-        password: ''
+      var user = {_userId: '',
+        _password: ''
       };
       return new self.authResource(user);
     };

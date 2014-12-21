@@ -45,7 +45,7 @@
             
             AuthService.setUserInfo($scope.obj.user);
             console.log($scope.obj.user)
-  $scope.obj.user.$save(function(d) {
+             $scope.obj.user.$save(function(d) {
               $scope.obj.user =d;
               console.log($scope.obj.user)
          
@@ -59,7 +59,7 @@
               },function(d) {
               $scope.error =d;
              console.log($scope.error)
-               $scope.obj.user.password=''
+               //$scope.obj.user._password=''
               });
       
     

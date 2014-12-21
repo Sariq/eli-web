@@ -6,10 +6,10 @@ public class DatabaseService : IDatabaseService
     public void Initialize()
     {
         CreateCollection("Employee");
-        SetCollectionPrimeryKey("Employee", "UserId");
+        SetCollectionPrimeryKey("Employee", "_userId");
 
         CreateCollection("Error");
-        SetCollectionPrimeryKey("Error", "ErrorDescription");
+        SetCollectionPrimeryKey("Error", "_errorDescription");
 
         InitializeEmployeeCollection();
         InitializeErrorCollection();
