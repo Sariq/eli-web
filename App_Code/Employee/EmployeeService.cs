@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.ServiceModel.Web;
 
-public class EmployeeService : DatabaseObject, IEmployee
+public class EmployeeService : DatabaseActions, IEmployee
 {
-    Database database = new Database();
-
     //public List<Employee> EmployeeList(Employee employee)
     //{
     //    var getEmployee = GetAllEmployees();
@@ -17,41 +16,73 @@ public class EmployeeService : DatabaseObject, IEmployee
 
         if (getEmployee != null)
         {
-            if (employee.Password == getEmployee.Password)
+            if (employee._password == getEmployee._password)
                 return getEmployee;
             else
             {
-                employee.Error = "Password Is Incorrect";
-                return employee;
+                var error = new Error(Error.ErrorType.PasswordIsIncorrect);
+                throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
             }
         }
-        employee.Error = "User Is Not Exist";
-        return employee;
+        else
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
     }
 
     public void AddEmployee(Employee employee)
     {
-        InsertObject(employee, "Employee");
+        var getEmployee = GetEmployee(employee);
+        if (getEmployee == null)
+            InsertObject(employee, "Employee");
+        else
+        {
+            var error = new Error(Error.ErrorType.UserIsAlreadyExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
     }
-
+   
     public void RemoveEmployee(Employee employee)
     {
-        RemoveObject(employee, "Employee");
+        var getEmployee = GetEmployee(employee);
+        if (getEmployee != null)
+            RemoveObject(getEmployee, "Employee");
+        else
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
     }
 
     public void UpdateEmployee(Employee employee)
     {
-        UpdateObject(employee, "Employee");
+        var getEmployee = GetEmployee(employee);
+        if (getEmployee != null)
+            UpdateObject(getEmployee, "Employee");
+        else
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
     }
 
     public Employee GetEmployee(Employee employee)
     {
-        return GetObject<Employee>("UserId", employee.UserId, "Employee").Result;
+        try
+        {
+            return GetObject<Employee>("UserId", employee._userId, "Employee").Result;
+        }
+        catch
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }   
     }
 
     public List<Employee> GetAllEmployees()
     {
         return GetAllObject<Employee>("Employee").Result;
-    }  
+    }
 
 }
