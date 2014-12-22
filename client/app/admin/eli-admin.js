@@ -12,7 +12,7 @@
     $stateProvider
       .state('dashboard', {
         url: '/dashboard',
-        templateUrl: 'views/dashboard.html',
+        templateUrl: 'partials/dashboard.html',
       
       }) 
         .state('logIn', {

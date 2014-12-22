@@ -41,8 +41,6 @@
         }
 
         $scope.logIn=function(){
-           //console.log("$scope.obj.user")
-            
             AuthService.setUserInfo($scope.obj.user);
             console.log($scope.obj.user)
              $scope.obj.user.$save(function(d) {
@@ -56,7 +54,10 @@
                 //console.log( AuthService.userInfo)
                 $location.path('/dashboard')
 
-              },function(d) {
+             }, function (d) {
+                 $scope.error = d;
+                 console.log($scope.error.data._errorDescription)
+                 swal({ title: $scope.error.data._errorDescription, text: "Please check your User Name and Password!", type: "warning", confirmButtonText: "Try Again" }, function (isConfirm) { if (isConfirm) { } });
               $scope.error =d;
              console.log($scope.error)
                //$scope.obj.user._password=''
