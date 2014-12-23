@@ -26,6 +26,20 @@
           $urlRouterProvider.otherwise('/');
   })
 
+  angular.module('eli.admin')
+.run(function ($rootScope, $location) {
+    console.log("run");
+    $rootScope.nav = {};
+        if (true) {
+         //   alert("log");
+            $rootScope.nav.show = false;
+            $location.path("/logIn")
+        }
+        else {
+            $rootScope.nav.show = true;
+            $location.path("/dashboard")
+        }
+        
 
-
+});
 

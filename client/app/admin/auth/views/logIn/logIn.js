@@ -22,7 +22,7 @@
         });
     
         function loadAuth(){
-            $location.path('/logIn')
+          //  $location.path('/logIn')
             //$scope.obj.user.$save(function(d) {
             //         $scope.obj.user =d;
             //        // console.log(self.user)
@@ -50,7 +50,7 @@
                AuthService.setUserInfo($scope.obj.user);
              
                $rootScope.$broadcast("authLoaded");
-              $scope.ob.navShow=true;
+               $rootScope.nav.show = true;
                 //console.log( AuthService.userInfo)
                 $location.path('/dashboard')
 
