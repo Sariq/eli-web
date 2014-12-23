@@ -10,10 +10,10 @@ public class Employee : DatabaseObject
     [DataMember] public String _lastName { get; set; }
     [DataMember] public String _email { get; set; }
     [DataMember] public Boolean _isAdmin { get; set; }
-    [DataMember] public Boolean _isOnline { get; set; }
+    [DataMember] public Boolean _isRememberMe { get; set; }
 
     public Employee(string userId, string password, string firstName, string lastName, 
-        string email, bool isAdmin, bool isOnline) : base()
+        string email, bool isAdmin, bool isRememberMe) : base()
     {
         _userId = userId;
         _password = password;
@@ -21,7 +21,7 @@ public class Employee : DatabaseObject
         _lastName = lastName;
         _email = email;
         _isAdmin = isAdmin;
-        _isOnline = isOnline;
+        _isRememberMe = isRememberMe;
     }
  
 }

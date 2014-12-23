@@ -15,6 +15,15 @@ public interface IEmployee
 
     [OperationContract]
     [WebInvoke(
+        Method = "POST",
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+        UriTemplate = "SignOut")
+    ]
+    void SignOut();
+
+    [OperationContract]
+    [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,

@@ -1,8 +1,8 @@
 ﻿public class ErrorService : DatabaseActions, IError
 {
-    public void AddError(Error error)
+    public void AddError(Error.ErrorType error)
     {
-        Error e = new Error(Error.ErrorType.Password);
+        Error e = new Error(error);
         InsertObject(e, "Error");
     }
 }

@@ -19,13 +19,13 @@ public class DatabaseService : IDatabaseService
     {
         var errorService = new ErrorService();
 
-        var error = new Error(Error.ErrorType.PasswordIsIncorrect);
+        var error = Error.ErrorType.PasswordIsIncorrect;
         errorService.AddError(error);
 
-        error = new Error(Error.ErrorType.UserIsNotExist);
+        error = Error.ErrorType.UserIsNotExist;
         errorService.AddError(error);
 
-        error = new Error(Error.ErrorType.UserIsAlreadyExist);
+        error = Error.ErrorType.UserIsAlreadyExist;
         errorService.AddError(error);
     }
 
