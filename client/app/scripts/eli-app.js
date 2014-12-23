@@ -6,7 +6,8 @@
   'ngResource',
   'ui.router',
   'ngAnimate',
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'LocalStorageModule'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, $translateProvider) {
     //delete $httpProvider.defaults.headers.common['X-Requested-With'];
