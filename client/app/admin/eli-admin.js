@@ -3,9 +3,10 @@
 
   angular.module('eli.admin', [
   'ngResource',
-  'ui.router'
+  'ui.router',
+  'LocalStorageModule'
 ])
-  .config(function ($stateProvider, $urlRouterProvider,$resourceProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $resourceProvider) {
     //delete $httpProvider.defaults.headers.common['X-Requested-With'];
     
 
@@ -43,3 +44,9 @@
 
 });
 
+  angular.module('eli.admin').config(function (localStorageServiceProvider) {
+      localStorageServiceProvider
+        .setPrefix('myApp')
+        .setStorageType('localStorage')
+        .setNotify(true, true)
+  });

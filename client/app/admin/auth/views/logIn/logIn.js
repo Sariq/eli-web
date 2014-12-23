@@ -1,8 +1,8 @@
 (function () {
-    function LogInCtrl(AuthService,$scope,$location,$rootScope) {
+    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService) {
         var self = this;
         console.log("LogInCtrl")
-
+        
         $scope.obj={}
         $scope.obj.user = AuthService.create();
         $scope.ob={};
@@ -21,7 +21,28 @@
 
         });
     
-        function loadAuth(){
+ 
+
+
+        //if (localStorageService.isSupported) {
+        //    console.log("yes");
+        //}
+
+        
+        function submit(key, val) {
+           // console.log(localStorageService.set(key, val));
+            console.log(getItem(key));
+        }
+
+        function getItem(key) {
+            return localStorageService.get(key);
+        }
+        submit('sariXXtestKey', 'sariXX2testvalue');
+        function loadAuth() {
+
+
+
+          
           //  $location.path('/logIn')
             //$scope.obj.user.$save(function(d) {
             //         $scope.obj.user =d;
@@ -40,7 +61,9 @@
             //         });
         }
 
-        $scope.logIn=function(){
+        $scope.logIn = function () {
+
+
             AuthService.setUserInfo($scope.obj.user);
             console.log($scope.obj.user)
              $scope.obj.user.$save(function(d) {
@@ -106,5 +129,5 @@ loadAuth();
   }
 
   angular.module('eli.admin')
-    .controller('LogInCtrl', ['AuthService','$scope','$location','$rootScope',LogInCtrl]);
+    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService', LogInCtrl]);
 }());
