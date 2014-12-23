@@ -16,10 +16,7 @@
               });
     };
 
-
-
      self.setUserInfo = function(userInfo){
-
         self.userInfo=userInfo;
     };
     self.getUserInfo = function(userInfo){
@@ -31,41 +28,6 @@
       };
       return new self.authResource(user);
     };
-
-    self.query = function (){
-      return self.authResource.query();
-    };
-
-      self.load= function() {
-      return $http.get('/api/v1/auth');
-    }
-      self.logout= function() {
-      return $http.get('/api/v1/auth/logout');
-    }
-    self.login= function(inputs) {
-      return inputs.$save(function(){
-        console.log("sss")
-      });
-    }
-    self.register= function(inputs) {
-      return $http.post('/api/v1/auth/register', inputs);
-    }
-    self.locations= function() {
-      return $http.get('/api/v1/auth/locations');
-    }
-    self.check= function() {
-      return $http.get('/api/v1/auth/check');
-    }
-
-
-
-
-
-
-
-
-
-
 
     return self;
   }

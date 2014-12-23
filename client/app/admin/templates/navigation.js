@@ -1,7 +1,7 @@
 (function () {
   function NavCtrl(AuthService,$scope,$rootScope) {
     var self = this;
-
+    console.log("nav");
    	  $scope.$on('authLoaded', function() {
        $scope.userInfo=AuthService.getUserInfo()
       

@@ -22,7 +22,7 @@
         });
     
         function loadAuth(){
-            $location.path('/logIn')
+          //  $location.path('/logIn')
             //$scope.obj.user.$save(function(d) {
             //         $scope.obj.user =d;
             //        // console.log(self.user)
@@ -41,8 +41,6 @@
         }
 
         $scope.logIn=function(){
-           //console.log("$scope.obj.user")
-            
             AuthService.setUserInfo($scope.obj.user);
             console.log($scope.obj.user)
              $scope.obj.user.$save(function(d) {
@@ -52,11 +50,14 @@
                AuthService.setUserInfo($scope.obj.user);
              
                $rootScope.$broadcast("authLoaded");
-              $scope.ob.navShow=true;
+               $rootScope.nav.show = true;
                 //console.log( AuthService.userInfo)
                 $location.path('/dashboard')
 
-              },function(d) {
+             }, function (d) {
+                 $scope.error = d;
+                 console.log($scope.error.data._errorDescription)
+                 swal({ title: $scope.error.data._errorDescription, text: "Please check your User Name and Password!", type: "warning", confirmButtonText: "Try Again" }, function (isConfirm) { if (isConfirm) { } });
               $scope.error =d;
              console.log($scope.error)
                //$scope.obj.user._password=''
