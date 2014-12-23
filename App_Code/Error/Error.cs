@@ -8,7 +8,7 @@ public class Error : DatabaseObject
         PasswordIsIncorrect,
         UserIsNotExist,
         UserIsAlreadyExist,
-        Password
+        NewErrorType
     }
 
     [DataMember] public string _errorDescription { get; set; }

@@ -11,30 +11,24 @@ public class EmployeeService : DatabaseActions, IEmployee
 
     public Employee SignIn(Employee employee)
     {
-        var getEmployee = GetEmployee(employee);
-        return getEmployee;
-        //if (getEmployee == null)
-        //{
-        //    var error = new Error(Error.ErrorType.UserIsNotExist);
-        //    throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        //}
-        
-        //if (employee._password != getEmployee._password)
-        //{
-        //    var error = new Error(Error.ErrorType.PasswordIsIncorrect);
-        //    throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        //}
+        var dbEmployee = GetEmployee(employee);
 
-        //if (employee._isRememberMe)
-        //{
-        //    getEmployee._isRememberMe = true;
-        //    var employeeId = getEmployee._id;
-        //    WebOperationContext.Current.OutgoingResponse.Headers[HttpResponseHeader.SetCookie] = string.Format("TokenId={0}", employeeId);
-        //}
-        //else
-        //    getEmployee._isRememberMe = false;
+        if (employee._password != dbEmployee._password)
+        {
+            var error = new Error(Error.ErrorType.PasswordIsIncorrect);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
 
-        //return getEmployee;
+        if (employee._isRememberMe)
+        {
+            dbEmployee._isRememberMe = true;
+            var employeeId = dbEmployee._id;
+            WebOperationContext.Current.OutgoingResponse.Headers[HttpResponseHeader.SetCookie] = string.Format("TokenId={0}", employeeId);
+        }
+        else
+            dbEmployee._isRememberMe = false;
+
+        return dbEmployee;
     }
 
     public void SignOut()
@@ -44,8 +38,8 @@ public class EmployeeService : DatabaseActions, IEmployee
 
     public void AddEmployee(Employee employee)
     {
-        var getEmployee = GetEmployee(employee);
-        if (getEmployee == null)
+        var dbEmployee = GetEmployee(employee);
+        if (dbEmployee == null)
             InsertObject(employee, "Employee");
         else
         {
@@ -56,9 +50,9 @@ public class EmployeeService : DatabaseActions, IEmployee
 
     public void RemoveEmployee(Employee employee)
     {
-        var getEmployee = GetEmployee(employee);
-        if (getEmployee != null)
-            RemoveObject(getEmployee, "Employee");
+        var dbEmployee = GetEmployee(employee);
+        if (dbEmployee != null)
+            RemoveObject(dbEmployee, "Employee");
         else
         {
             var error = new Error(Error.ErrorType.UserIsNotExist);
@@ -68,9 +62,9 @@ public class EmployeeService : DatabaseActions, IEmployee
 
     public void UpdateEmployee(Employee employee)
     {
-        var getEmployee = GetEmployee(employee);
-        if (getEmployee != null)
-            UpdateObject(getEmployee, "Employee");
+        var dbEmployee = GetEmployee(employee);
+        if (dbEmployee != null)
+            UpdateObject(dbEmployee, "Employee");
         else
         {
             var error = new Error(Error.ErrorType.UserIsNotExist);
