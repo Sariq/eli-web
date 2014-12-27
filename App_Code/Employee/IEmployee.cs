@@ -27,6 +27,15 @@ public interface IEmployee
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetEmployee")
+    ]
+    Employee GetEmployee();
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "AddEmployee")
     ]
     void AddEmployee(Employee employee);
@@ -49,14 +58,7 @@ public interface IEmployee
     ]
     void UpdateEmployee(Employee employee);
 
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetEmployee")
-    ]
-    Employee GetEmployee(Employee employee);
+
 
     //[OperationContract]
     //[WebInvoke(

@@ -5,6 +5,11 @@ using System.Diagnostics;
 using System.Net;
 using System.ServiceModel.Web;
 using System.Web;
+using JWT;
+using System.Diagnostics;
+using System.Threading;
+using System.Web;
+
 
 public class EmployeeService : DatabaseActions, IEmployee
 {
@@ -12,6 +17,12 @@ public class EmployeeService : DatabaseActions, IEmployee
     public Employee SignIn(Employee employee)
     {
         var dbEmployee = GetEmployee(employee);
+
+        if (dbEmployee == null)
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
 
         if (employee._password != dbEmployee._password)
         {
@@ -22,18 +33,60 @@ public class EmployeeService : DatabaseActions, IEmployee
         if (employee._isRememberMe)
         {
             dbEmployee._isRememberMe = true;
-            var employeeId = dbEmployee._id;
-            WebOperationContext.Current.OutgoingResponse.Headers[HttpResponseHeader.SetCookie] = string.Format("TokenId={0}", employeeId);
+            UpdateEmployee(dbEmployee);
         }
         else
+        {
             dbEmployee._isRememberMe = false;
+            UpdateEmployee(dbEmployee);
+        }
+
+        new ClientServerCommunicationActions().SetTokenToHeader(dbEmployee);
+
+        //// Example
+        //var token2 = new ClientServerCommunicationActions().GetTokenFromHeader();
+        //new ClientServerCommunicationActions().SetTokenToHeader(token2);
+        //new ClientServerCommunicationActions().SetTokenToHeader_AllDetails_OnlyForExample(token2);
+        //// End Example
 
         return dbEmployee;
     }
 
     public void SignOut()
     {
-        HttpContext.Current.Request.Cookies.Remove("TokenId");
+        if (HttpContext.Current.Request.Cookies["TokenId"] != null)
+        {
+            HttpCookie myCookie = new HttpCookie("TokenId");
+            myCookie.Expires = DateTime.Now.AddDays(-1d);
+            HttpContext.Current.Response.Cookies.Add(myCookie);
+        }
+    }
+
+    public Employee GetEmployee()
+    {
+        Employee employee;
+        try
+        {
+            new ClientServerCommunicationActions().GetTokenFromHeader();
+        }
+        catch
+        {
+            var error = new Error(Error.ErrorType.NoUserInHeader);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
+
+        var tokenId = new ClientServerCommunicationActions().GetID_FromTokenInHeader();
+
+        try
+        {
+             employee = GetObject<Employee>(tokenId, "Employee").Result;
+        }
+        catch
+        {
+            var error = new Error(Error.ErrorType.UserInHeaderIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
+        return employee;
     }
 
     public void AddEmployee(Employee employee)
@@ -64,7 +117,7 @@ public class EmployeeService : DatabaseActions, IEmployee
     {
         var dbEmployee = GetEmployee(employee);
         if (dbEmployee != null)
-            UpdateObject(dbEmployee, "Employee");
+            UpdateObject(employee, "Employee");
         else
         {
             var error = new Error(Error.ErrorType.UserIsNotExist);
@@ -77,6 +130,19 @@ public class EmployeeService : DatabaseActions, IEmployee
         try
         {
             return GetObject<Employee>("_userId", employee._userId, "Employee").Result;
+        }
+        catch
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
+    }
+
+    public Employee GetEmployee(string employeeId)
+    {
+        try
+        {
+            return GetObject<Employee>(employeeId, "Employee").Result;
         }
         catch
         {
