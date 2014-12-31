@@ -11,7 +11,7 @@ public interface IEmployee
         BodyStyle = WebMessageBodyStyle.Bare,
         UriTemplate = "SignIn")
     ]
-    Employee SignIn(Employee employee);
+    EmployeeForClient SignIn(Employee employee);
 
     [OperationContract]
     [WebInvoke(

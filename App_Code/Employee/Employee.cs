@@ -23,5 +23,17 @@ public class Employee : DatabaseObject
         _isAdmin = isAdmin;
         _isRememberMe = isRememberMe;
     }
+
+    public Employee(Employee employee)
+    {
+        _id = employee._id;
+        _userId = employee._userId;
+        _password = employee._password;
+        _firstName = employee._firstName;
+        _lastName = employee._lastName;
+        _email = employee._email;
+        _isAdmin = employee._isAdmin;
+        _isRememberMe = employee._isRememberMe;
+    }
  
 }

@@ -13,8 +13,9 @@ using System.Web;
 
 public class EmployeeService : DatabaseActions, IEmployee
 {
+    ClientServerCommunicationActions communication = new ClientServerCommunicationActions();
 
-    public Employee SignIn(Employee employee)
+    public EmployeeForClient SignIn(Employee employee)
     {
         var dbEmployee = GetEmployee(employee);
 
@@ -41,7 +42,7 @@ public class EmployeeService : DatabaseActions, IEmployee
             UpdateEmployee(dbEmployee);
         }
 
-        new ClientServerCommunicationActions().SetTokenToHeader(dbEmployee);
+        communication.SetTokenToHeader(dbEmployee);
 
         //// Example
         //var token2 = new ClientServerCommunicationActions().GetTokenFromHeader();
@@ -49,7 +50,8 @@ public class EmployeeService : DatabaseActions, IEmployee
         //new ClientServerCommunicationActions().SetTokenToHeader_AllDetails_OnlyForExample(token2);
         //// End Example
 
-        return dbEmployee;
+        var returnEmployee = new EmployeeForClient(dbEmployee);
+        return returnEmployee;
     }
 
     public void SignOut()
@@ -67,7 +69,7 @@ public class EmployeeService : DatabaseActions, IEmployee
         Employee employee;
         try
         {
-            new ClientServerCommunicationActions().GetTokenFromHeader();
+            communication.GetTokenFromHeader();
         }
         catch
         {
@@ -75,17 +77,18 @@ public class EmployeeService : DatabaseActions, IEmployee
             throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
         }
 
-        var tokenId = new ClientServerCommunicationActions().GetID_FromTokenInHeader();
+        var tokenId = communication.GetID_FromTokenInHeader();
 
         try
         {
-             employee = GetObject<Employee>(tokenId, "Employee").Result;
+            employee = GetObject<Employee>(tokenId, "Employee").Result;
         }
         catch
         {
             var error = new Error(Error.ErrorType.UserInHeaderIsNotExist);
             throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
         }
+
         return employee;
     }
 
