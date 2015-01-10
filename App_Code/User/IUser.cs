@@ -2,7 +2,7 @@
 using System.ServiceModel.Web;
 
 [ServiceContract]
-public interface IEmployee
+public interface IUser
 {
     [OperationContract]
     [WebInvoke(
@@ -11,7 +11,7 @@ public interface IEmployee
         BodyStyle = WebMessageBodyStyle.Bare,
         UriTemplate = "SignIn")
     ]
-    EmployeeForClient SignIn(Employee employee);
+    UserForClient SignIn(User user);
 
     [OperationContract]
     [WebInvoke(
@@ -27,45 +27,43 @@ public interface IEmployee
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetEmployee")
+         UriTemplate = "GetUserFromHeader")
     ]
-    Employee GetEmployee();
+    User GetUserFromHeader();
 
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "AddEmployee")
+         UriTemplate = "GetUser")
     ]
-    void AddEmployee(Employee employee);
+    User GetUser(string userId);
 
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "RemoveEmployee")
+         UriTemplate = "AddUser")
     ]
-    void RemoveEmployee(Employee employee);
+    void AddUser(User user);
 
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "UpdateEmployee")
+         UriTemplate = "RemoveUser")
     ]
-    void UpdateEmployee(Employee employee);
+    void RemoveUser(User user);
 
-
-
-    //[OperationContract]
-    //[WebInvoke(
-    //    Method = "POST",
-    //    ResponseFormat = WebMessageFormat.Json,
-    //    BodyStyle = WebMessageBodyStyle.Bare,
-    //    UriTemplate = "EmployeeList")
-    //]
-    //List<Employee> EmployeeList(Employee employee);  
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "UpdateUser")
+    ]
+    void UpdateUser(User user);
 }

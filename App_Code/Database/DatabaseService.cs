@@ -1,18 +1,23 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using System;
 
 public class DatabaseService : IDatabaseService
 {
     public void Initialize()
     {
-        CreateCollection("Employee");
-        SetCollectionPrimeryKey("Employee", "_userId");
+        CreateCollection("User");
+        SetCollectionPrimeryKey("User", "_userId");
 
         CreateCollection("Error");
         SetCollectionPrimeryKey("Error", "_errorDescription");
 
-        InitializeEmployeeCollection();
+        CreateCollection("Patient");
+        SetCollectionPrimeryKey("Patient", "_identityNumber");
+
+        InitializeUserCollection();
         InitializeErrorCollection();
+        InitializePatientCollection();
     }
 
     private void InitializeErrorCollection()
@@ -29,22 +34,35 @@ public class DatabaseService : IDatabaseService
         errorService.AddError(error);
     }
 
-    private void InitializeEmployeeCollection()
+    private void InitializeUserCollection()
     {
-        var employeeService = new EmployeeService();
+        var userService = new UserService();
 
-        var employee = new Employee("Karin", "123", "Karin", "B", "karin@gmail.com", true, true);
-        employeeService.AddEmployee(employee);
+        var user = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", DateTime.Today, true, true);
+        userService.AddUser(user);
 
-        employee = new Employee("Sari", "123", "Sari", "Q", "sari@gmail.com", true, true);
-        employeeService.AddEmployee(employee);
+        user = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "K", DateTime.Today, true, true);
+        userService.AddUser(user);
+    }
+
+    private void InitializePatientCollection()
+    {
+        var patientService = new PatientService();
+        Assignment[] t = new Assignment[1];
+        t[0]=new Assignment("Finish Project", "content", false);
+
+        var patient = new Patient("123", "Karin", "B", "karin@gmail.com", "K", DateTime.Today, t);
+        patientService.AddPatient(patient);
+
+        patient = new Patient("1233", "Sari", "Q", "sari@gmail.com", "K", DateTime.Today, t);
+        patientService.AddPatient(patient);
     }
 
     private MongoDatabase GetDatabase()
     {
         MongoClient client = new MongoClient();
         var server = client.GetServer();
-        var database = server.GetDatabase("ELI");
+        var database = server.GetDatabase("ELI5");
         return database;
     }
 

@@ -10,10 +10,14 @@ public class Error : DatabaseObject
         UserIsAlreadyExist,
         NoUserInHeader,
         UserInHeaderIsNotExist,
-        ErrorIsNotExist
+        ErrorIsNotExist,
+        MeetingIsNotExist,
+        MeetingIsAlreadyExist,
+        MeetingIsExist
     }
 
-    [DataMember] public string _errorDescription { get; set; }
+    [DataMember] 
+    public string _errorDescription { get; set; }
 
 
     public Error(ErrorType errorType) : base()
