@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 
 [DataContract]
-public class Error : DatabaseObject
+public class Error
 {
     public enum ErrorType
     {
@@ -10,19 +10,24 @@ public class Error : DatabaseObject
         UserIsAlreadyExist,
         NoUserInHeader,
         UserInHeaderIsNotExist,
-        ErrorIsNotExist,
+
         MeetingIsNotExist,
         MeetingIsAlreadyExist,
-        MeetingIsExist
+
+        PatientIsNotExist,
+        PatientIsAlreadyExist,
+
+        AssignmentIsNotExist,
+        AssignmentIsAlreadyExist,
     }
 
     [DataMember] 
-    public string _errorDescription { get; set; }
+    public string error_description { get; set; }
 
 
     public Error(ErrorType errorType) : base()
     {
-        _errorDescription = errorType.ToString();
+        this.error_description = errorType.ToString();
     }
 
 }
